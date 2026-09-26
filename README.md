@@ -76,15 +76,17 @@ These are deterministic specification checks, not population-level performance m
 
 A machine-readable citation file is provided in `CITATION.cff`. A version-specific archival DOI should be added after the first public release is deposited in a persistent archive.
 
-## Availability and license status
+## Availability and release status
 
-This repository is being prepared as the paper’s reproducibility artifact. **No software or data license has yet been granted.** See `LICENSE_STATUS.md`.
+IBM approval for public release has been confirmed by the repository owner. The repository is still being finalized for publication.
 
-Before the camera-ready manuscript cites this repository as publicly available:
+Before the camera-ready manuscript cites a frozen public artifact:
 
-1. confirm IBM approval for public release,
-2. select an approved software/data license,
-3. make the repository public,
-4. freeze a release/tag, and
-5. preferably archive that release in Zenodo or another persistent repository.
+1. make the repository public,
+2. add the approved software/data license or licenses,
+3. connect the repository to Zenodo (recommended) before the first release,
+4. create the frozen `v1.0.0` GitHub release/tag, and
+5. cite the version-specific Zenodo DOI or frozen GitHub release.
+
+Until an approved license is added, public visibility alone does not grant reuse rights. See `LICENSE_STATUS.md`.
 
