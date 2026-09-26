@@ -9,7 +9,8 @@ authors:
 version: "1.0.1"
 date-released: 2026-09-26
 repository-code: "https://github.com/kaiello/version-bound-assurance-tas2026"
-url: "https://github.com/kaiello/version-bound-assurance-tas2026"
+doi: 10.5281/zenodo.22981118
+url: "https://doi.org/10.5281/zenodo.22981118"
 license: Apache-2.0
 abstract: >-
   Bounded executable specification, six synthetic fixtures, three negative controls,
