@@ -1,0 +1,83 @@
+{
+  "scope": "Synthetic, bounded specification checks only; no recorded agents, live PEP, signatures, or performance benchmark.",
+  "fixture_count": 6,
+  "negative_control_count": 3,
+  "all_expected_outcomes_match": true,
+  "results": [
+    {
+      "id": "F0",
+      "description": "Valid candidate",
+      "K0": true,
+      "K1": true,
+      "closure": true,
+      "manifest_admitted": true,
+      "gate2": "ALLOW",
+      "closure_reasons": [],
+      "manifest_reasons": []
+    },
+    {
+      "id": "F1",
+      "description": "Stale evaluation and approval",
+      "K0": true,
+      "K1": true,
+      "closure": false,
+      "manifest_admitted": true,
+      "gate2": "HOLD",
+      "closure_reasons": [
+        "APPROVAL_BINDING",
+        "EVALUATION_BINDING"
+      ],
+      "manifest_reasons": []
+    },
+    {
+      "id": "F2",
+      "description": "Observation in evaluation-result role",
+      "K0": true,
+      "K1": false,
+      "closure": false,
+      "manifest_admitted": true,
+      "gate2": "HOLD",
+      "closure_reasons": [
+        "TYPE_OR_RELATION_MISMATCH"
+      ],
+      "manifest_reasons": []
+    },
+    {
+      "id": "F3",
+      "description": "Unsupported current-version claim",
+      "K0": true,
+      "K1": true,
+      "closure": false,
+      "manifest_admitted": true,
+      "gate2": "HOLD",
+      "closure_reasons": [
+        "GROUNDING_UNSUPPORTED"
+      ],
+      "manifest_reasons": []
+    },
+    {
+      "id": "F4",
+      "description": "Corrected claim; all affected bindings refreshed",
+      "K0": true,
+      "K1": true,
+      "closure": true,
+      "manifest_admitted": true,
+      "gate2": "ALLOW",
+      "closure_reasons": [],
+      "manifest_reasons": []
+    },
+    {
+      "id": "F5",
+      "description": "Additional material claim omitted from manifest",
+      "K0": true,
+      "K1": true,
+      "closure": true,
+      "manifest_admitted": false,
+      "gate2": "HOLD",
+      "closure_reasons": [],
+      "manifest_reasons": [
+        "COVERAGE_CLAIM_MISMATCH"
+      ]
+    }
+  ]
+}
