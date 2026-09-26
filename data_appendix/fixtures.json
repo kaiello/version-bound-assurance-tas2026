@@ -1,0 +1,1205 @@
+[
+  {
+    "id": "F0",
+    "description": "Valid candidate",
+    "fixture": {
+      "nodes": {
+        "r": {
+          "type": "Artifact",
+          "content": {
+            "commit": "commit-h1",
+            "claims": {
+              "api_support": {
+                "versions": [
+                  1
+                ]
+              }
+            }
+          },
+          "digest": "7caf017b5c3ae6b8306c2f5026b06d7235724081dd9f16f1d55f7ff1622103dc"
+        },
+        "s": {
+          "type": "Source",
+          "content": {
+            "supported_versions": [
+              1
+            ],
+            "exhaustive_for_fixture": true
+          },
+          "digest": "2746eb5c7fd32ea23821e27943f4baab9b08324ac64efa7cbb6d4d8959e8b93d"
+        },
+        "e": {
+          "type": "Evidence",
+          "source_digest": "2746eb5c7fd32ea23821e27943f4baab9b08324ac64efa7cbb6d4d8959e8b93d",
+          "locator": "supported_versions",
+          "versions": [
+            1
+          ]
+        },
+        "t": {
+          "type": "Action",
+          "request": {
+            "instance": "commit-h1",
+            "operation": "commit",
+            "target": "Repo-A/feature/req-17",
+            "principal": "producer",
+            "policy": "v1"
+          },
+          "dispatch": {
+            "instance": "commit-h1",
+            "operation": "commit",
+            "target": "Repo-A/feature/req-17",
+            "principal": "producer",
+            "policy": "v1"
+          },
+          "receipt_request_digest": "205dbf147b4b790da015069cf3262420e71b1bef43d97a3051e6869c69175eec",
+          "artifact_digest": "7caf017b5c3ae6b8306c2f5026b06d7235724081dd9f16f1d55f7ff1622103dc"
+        },
+        "a": {
+          "type": "Authorization",
+          "request_digest": "205dbf147b4b790da015069cf3262420e71b1bef43d97a3051e6869c69175eec"
+        },
+        "g": {
+          "type": "Grant"
+        },
+        "d": {
+          "type": "Principal"
+        },
+        "up": {
+          "type": "Actor"
+        },
+        "ue": {
+          "type": "Actor"
+        },
+        "m": {
+          "type": "Evaluation"
+        },
+        "z": {
+          "type": "EvaluationResult",
+          "artifact_digest": "7caf017b5c3ae6b8306c2f5026b06d7235724081dd9f16f1d55f7ff1622103dc",
+          "evaluation_manifest": "unit-tests-v1",
+          "context": "merge:Repo-A/main",
+          "policy": "v1",
+          "passed_required_checks": true
+        },
+        "reviewer": {
+          "type": "Principal"
+        },
+        "qr": {
+          "type": "Approval",
+          "artifact_digest": "7caf017b5c3ae6b8306c2f5026b06d7235724081dd9f16f1d55f7ff1622103dc",
+          "context": "merge:Repo-A/main",
+          "policy": "v1"
+        },
+        "c:api_support": {
+          "type": "Claim",
+          "slot": "api_support",
+          "content": {
+            "versions": [
+              1
+            ]
+          },
+          "artifact_digest": "7caf017b5c3ae6b8306c2f5026b06d7235724081dd9f16f1d55f7ff1622103dc"
+        }
+      },
+      "edges": [
+        [
+          "d",
+          "delegates",
+          "g"
+        ],
+        [
+          "a",
+          "derivedFrom",
+          "g"
+        ],
+        [
+          "a",
+          "authorizes",
+          "t"
+        ],
+        [
+          "r",
+          "wasGeneratedBy",
+          "t"
+        ],
+        [
+          "t",
+          "performedBy",
+          "up"
+        ],
+        [
+          "m",
+          "evaluates",
+          "r"
+        ],
+        [
+          "z",
+          "generatedBy",
+          "m"
+        ],
+        [
+          "m",
+          "performedBy",
+          "ue"
+        ],
+        [
+          "reviewer",
+          "approves",
+          "qr"
+        ],
+        [
+          "qr",
+          "approvalRecordFor",
+          "r"
+        ],
+        [
+          "s",
+          "yields",
+          "e"
+        ],
+        [
+          "e",
+          "supports",
+          "c:api_support"
+        ],
+        [
+          "c:api_support",
+          "claimBoundTo",
+          "r"
+        ]
+      ],
+      "manifest": {
+        "artifact_digest": "7caf017b5c3ae6b8306c2f5026b06d7235724081dd9f16f1d55f7ff1622103dc",
+        "context": "merge:Repo-A/main",
+        "policy": "v1",
+        "selector": "all-schema-claims-v1",
+        "claims": [
+          "api_support"
+        ],
+        "actions": [
+          "t"
+        ],
+        "requires_evaluation": true,
+        "requires_approval": true
+      },
+      "admitted_trace_actions": [
+        "t"
+      ],
+      "assumptions": "Identity, integrity, separation, grant validity, event ordering and complete capture are stipulated, not cryptographically or empirically verified."
+    },
+    "expected": [
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "id": "F1",
+    "description": "Stale evaluation and approval",
+    "fixture": {
+      "nodes": {
+        "r": {
+          "type": "Artifact",
+          "content": {
+            "commit": "commit-h2",
+            "claims": {
+              "api_support": {
+                "versions": [
+                  1
+                ]
+              }
+            }
+          },
+          "digest": "f549643b484d456ca77cc6a63f53958d620925dff68cf80c9b04fa7625164bd0"
+        },
+        "s": {
+          "type": "Source",
+          "content": {
+            "supported_versions": [
+              1
+            ],
+            "exhaustive_for_fixture": true
+          },
+          "digest": "2746eb5c7fd32ea23821e27943f4baab9b08324ac64efa7cbb6d4d8959e8b93d"
+        },
+        "e": {
+          "type": "Evidence",
+          "source_digest": "2746eb5c7fd32ea23821e27943f4baab9b08324ac64efa7cbb6d4d8959e8b93d",
+          "locator": "supported_versions",
+          "versions": [
+            1
+          ]
+        },
+        "t": {
+          "type": "Action",
+          "request": {
+            "instance": "commit-h2",
+            "operation": "commit",
+            "target": "Repo-A/feature/req-17",
+            "principal": "producer",
+            "policy": "v1"
+          },
+          "dispatch": {
+            "instance": "commit-h2",
+            "operation": "commit",
+            "target": "Repo-A/feature/req-17",
+            "principal": "producer",
+            "policy": "v1"
+          },
+          "receipt_request_digest": "f75fe308311a70cf47acf4a26c33e9f95ee00b6e9188817c55fd2005d5a48fe6",
+          "artifact_digest": "f549643b484d456ca77cc6a63f53958d620925dff68cf80c9b04fa7625164bd0"
+        },
+        "a": {
+          "type": "Authorization",
+          "request_digest": "f75fe308311a70cf47acf4a26c33e9f95ee00b6e9188817c55fd2005d5a48fe6"
+        },
+        "g": {
+          "type": "Grant"
+        },
+        "d": {
+          "type": "Principal"
+        },
+        "up": {
+          "type": "Actor"
+        },
+        "ue": {
+          "type": "Actor"
+        },
+        "m": {
+          "type": "Evaluation"
+        },
+        "z": {
+          "type": "EvaluationResult",
+          "artifact_digest": "7caf017b5c3ae6b8306c2f5026b06d7235724081dd9f16f1d55f7ff1622103dc",
+          "evaluation_manifest": "unit-tests-v1",
+          "context": "merge:Repo-A/main",
+          "policy": "v1",
+          "passed_required_checks": true
+        },
+        "reviewer": {
+          "type": "Principal"
+        },
+        "qr": {
+          "type": "Approval",
+          "artifact_digest": "7caf017b5c3ae6b8306c2f5026b06d7235724081dd9f16f1d55f7ff1622103dc",
+          "context": "merge:Repo-A/main",
+          "policy": "v1"
+        },
+        "c:api_support": {
+          "type": "Claim",
+          "slot": "api_support",
+          "content": {
+            "versions": [
+              1
+            ]
+          },
+          "artifact_digest": "f549643b484d456ca77cc6a63f53958d620925dff68cf80c9b04fa7625164bd0"
+        }
+      },
+      "edges": [
+        [
+          "d",
+          "delegates",
+          "g"
+        ],
+        [
+          "a",
+          "derivedFrom",
+          "g"
+        ],
+        [
+          "a",
+          "authorizes",
+          "t"
+        ],
+        [
+          "r",
+          "wasGeneratedBy",
+          "t"
+        ],
+        [
+          "t",
+          "performedBy",
+          "up"
+        ],
+        [
+          "m",
+          "evaluates",
+          "r"
+        ],
+        [
+          "z",
+          "generatedBy",
+          "m"
+        ],
+        [
+          "m",
+          "performedBy",
+          "ue"
+        ],
+        [
+          "reviewer",
+          "approves",
+          "qr"
+        ],
+        [
+          "qr",
+          "approvalRecordFor",
+          "r"
+        ],
+        [
+          "s",
+          "yields",
+          "e"
+        ],
+        [
+          "e",
+          "supports",
+          "c:api_support"
+        ],
+        [
+          "c:api_support",
+          "claimBoundTo",
+          "r"
+        ]
+      ],
+      "manifest": {
+        "artifact_digest": "f549643b484d456ca77cc6a63f53958d620925dff68cf80c9b04fa7625164bd0",
+        "context": "merge:Repo-A/main",
+        "policy": "v1",
+        "selector": "all-schema-claims-v1",
+        "claims": [
+          "api_support"
+        ],
+        "actions": [
+          "t"
+        ],
+        "requires_evaluation": true,
+        "requires_approval": true
+      },
+      "admitted_trace_actions": [
+        "t"
+      ],
+      "assumptions": "Identity, integrity, separation, grant validity, event ordering and complete capture are stipulated, not cryptographically or empirically verified."
+    },
+    "expected": [
+      true,
+      true,
+      false,
+      false
+    ]
+  },
+  {
+    "id": "F2",
+    "description": "Observation in evaluation-result role",
+    "fixture": {
+      "nodes": {
+        "r": {
+          "type": "Artifact",
+          "content": {
+            "commit": "commit-wrong-type",
+            "claims": {
+              "api_support": {
+                "versions": [
+                  1
+                ]
+              }
+            }
+          },
+          "digest": "e483f40d2243dc63b5f127550ecaa188f83d5906823de7c46c5c53650f24ff0f"
+        },
+        "s": {
+          "type": "Source",
+          "content": {
+            "supported_versions": [
+              1
+            ],
+            "exhaustive_for_fixture": true
+          },
+          "digest": "2746eb5c7fd32ea23821e27943f4baab9b08324ac64efa7cbb6d4d8959e8b93d"
+        },
+        "e": {
+          "type": "Evidence",
+          "source_digest": "2746eb5c7fd32ea23821e27943f4baab9b08324ac64efa7cbb6d4d8959e8b93d",
+          "locator": "supported_versions",
+          "versions": [
+            1
+          ]
+        },
+        "t": {
+          "type": "Action",
+          "request": {
+            "instance": "commit-wrong-type",
+            "operation": "commit",
+            "target": "Repo-A/feature/req-17",
+            "principal": "producer",
+            "policy": "v1"
+          },
+          "dispatch": {
+            "instance": "commit-wrong-type",
+            "operation": "commit",
+            "target": "Repo-A/feature/req-17",
+            "principal": "producer",
+            "policy": "v1"
+          },
+          "receipt_request_digest": "e9e40e3828633449c0b0e63172d3565ed49e53db413e3ac10ccf32da59fd78d3",
+          "artifact_digest": "e483f40d2243dc63b5f127550ecaa188f83d5906823de7c46c5c53650f24ff0f"
+        },
+        "a": {
+          "type": "Authorization",
+          "request_digest": "e9e40e3828633449c0b0e63172d3565ed49e53db413e3ac10ccf32da59fd78d3"
+        },
+        "g": {
+          "type": "Grant"
+        },
+        "d": {
+          "type": "Principal"
+        },
+        "up": {
+          "type": "Actor"
+        },
+        "ue": {
+          "type": "Actor"
+        },
+        "m": {
+          "type": "Evaluation"
+        },
+        "z": {
+          "type": "Observation",
+          "artifact_digest": "e483f40d2243dc63b5f127550ecaa188f83d5906823de7c46c5c53650f24ff0f",
+          "evaluation_manifest": "unit-tests-v1",
+          "context": "merge:Repo-A/main",
+          "policy": "v1",
+          "passed_required_checks": true
+        },
+        "reviewer": {
+          "type": "Principal"
+        },
+        "qr": {
+          "type": "Approval",
+          "artifact_digest": "e483f40d2243dc63b5f127550ecaa188f83d5906823de7c46c5c53650f24ff0f",
+          "context": "merge:Repo-A/main",
+          "policy": "v1"
+        },
+        "c:api_support": {
+          "type": "Claim",
+          "slot": "api_support",
+          "content": {
+            "versions": [
+              1
+            ]
+          },
+          "artifact_digest": "e483f40d2243dc63b5f127550ecaa188f83d5906823de7c46c5c53650f24ff0f"
+        }
+      },
+      "edges": [
+        [
+          "d",
+          "delegates",
+          "g"
+        ],
+        [
+          "a",
+          "derivedFrom",
+          "g"
+        ],
+        [
+          "a",
+          "authorizes",
+          "t"
+        ],
+        [
+          "r",
+          "wasGeneratedBy",
+          "t"
+        ],
+        [
+          "t",
+          "performedBy",
+          "up"
+        ],
+        [
+          "m",
+          "evaluates",
+          "r"
+        ],
+        [
+          "z",
+          "generatedBy",
+          "m"
+        ],
+        [
+          "m",
+          "performedBy",
+          "ue"
+        ],
+        [
+          "reviewer",
+          "approves",
+          "qr"
+        ],
+        [
+          "qr",
+          "approvalRecordFor",
+          "r"
+        ],
+        [
+          "s",
+          "yields",
+          "e"
+        ],
+        [
+          "e",
+          "supports",
+          "c:api_support"
+        ],
+        [
+          "c:api_support",
+          "claimBoundTo",
+          "r"
+        ]
+      ],
+      "manifest": {
+        "artifact_digest": "e483f40d2243dc63b5f127550ecaa188f83d5906823de7c46c5c53650f24ff0f",
+        "context": "merge:Repo-A/main",
+        "policy": "v1",
+        "selector": "all-schema-claims-v1",
+        "claims": [
+          "api_support"
+        ],
+        "actions": [
+          "t"
+        ],
+        "requires_evaluation": true,
+        "requires_approval": true
+      },
+      "admitted_trace_actions": [
+        "t"
+      ],
+      "assumptions": "Identity, integrity, separation, grant validity, event ordering and complete capture are stipulated, not cryptographically or empirically verified."
+    },
+    "expected": [
+      true,
+      false,
+      false,
+      false
+    ]
+  },
+  {
+    "id": "F3",
+    "description": "Unsupported current-version claim",
+    "fixture": {
+      "nodes": {
+        "r": {
+          "type": "Artifact",
+          "content": {
+            "commit": "commit-grounding",
+            "claims": {
+              "api_support": {
+                "versions": [
+                  1,
+                  2
+                ]
+              }
+            }
+          },
+          "digest": "ddf476ab29425ef3d71f21be67bb4da10c88733c8ecd5ee3e37135ef9cd32856"
+        },
+        "s": {
+          "type": "Source",
+          "content": {
+            "supported_versions": [
+              1
+            ],
+            "exhaustive_for_fixture": true
+          },
+          "digest": "2746eb5c7fd32ea23821e27943f4baab9b08324ac64efa7cbb6d4d8959e8b93d"
+        },
+        "e": {
+          "type": "Evidence",
+          "source_digest": "2746eb5c7fd32ea23821e27943f4baab9b08324ac64efa7cbb6d4d8959e8b93d",
+          "locator": "supported_versions",
+          "versions": [
+            1
+          ]
+        },
+        "t": {
+          "type": "Action",
+          "request": {
+            "instance": "commit-grounding",
+            "operation": "commit",
+            "target": "Repo-A/feature/req-17",
+            "principal": "producer",
+            "policy": "v1"
+          },
+          "dispatch": {
+            "instance": "commit-grounding",
+            "operation": "commit",
+            "target": "Repo-A/feature/req-17",
+            "principal": "producer",
+            "policy": "v1"
+          },
+          "receipt_request_digest": "e3218a409196863cafe90746631843f3f3a88e0005ddbd207b040c214b04b00f",
+          "artifact_digest": "ddf476ab29425ef3d71f21be67bb4da10c88733c8ecd5ee3e37135ef9cd32856"
+        },
+        "a": {
+          "type": "Authorization",
+          "request_digest": "e3218a409196863cafe90746631843f3f3a88e0005ddbd207b040c214b04b00f"
+        },
+        "g": {
+          "type": "Grant"
+        },
+        "d": {
+          "type": "Principal"
+        },
+        "up": {
+          "type": "Actor"
+        },
+        "ue": {
+          "type": "Actor"
+        },
+        "m": {
+          "type": "Evaluation"
+        },
+        "z": {
+          "type": "EvaluationResult",
+          "artifact_digest": "ddf476ab29425ef3d71f21be67bb4da10c88733c8ecd5ee3e37135ef9cd32856",
+          "evaluation_manifest": "unit-tests-v1",
+          "context": "merge:Repo-A/main",
+          "policy": "v1",
+          "passed_required_checks": true
+        },
+        "reviewer": {
+          "type": "Principal"
+        },
+        "qr": {
+          "type": "Approval",
+          "artifact_digest": "ddf476ab29425ef3d71f21be67bb4da10c88733c8ecd5ee3e37135ef9cd32856",
+          "context": "merge:Repo-A/main",
+          "policy": "v1"
+        },
+        "c:api_support": {
+          "type": "Claim",
+          "slot": "api_support",
+          "content": {
+            "versions": [
+              1,
+              2
+            ]
+          },
+          "artifact_digest": "ddf476ab29425ef3d71f21be67bb4da10c88733c8ecd5ee3e37135ef9cd32856"
+        }
+      },
+      "edges": [
+        [
+          "d",
+          "delegates",
+          "g"
+        ],
+        [
+          "a",
+          "derivedFrom",
+          "g"
+        ],
+        [
+          "a",
+          "authorizes",
+          "t"
+        ],
+        [
+          "r",
+          "wasGeneratedBy",
+          "t"
+        ],
+        [
+          "t",
+          "performedBy",
+          "up"
+        ],
+        [
+          "m",
+          "evaluates",
+          "r"
+        ],
+        [
+          "z",
+          "generatedBy",
+          "m"
+        ],
+        [
+          "m",
+          "performedBy",
+          "ue"
+        ],
+        [
+          "reviewer",
+          "approves",
+          "qr"
+        ],
+        [
+          "qr",
+          "approvalRecordFor",
+          "r"
+        ],
+        [
+          "s",
+          "yields",
+          "e"
+        ],
+        [
+          "e",
+          "supports",
+          "c:api_support"
+        ],
+        [
+          "c:api_support",
+          "claimBoundTo",
+          "r"
+        ]
+      ],
+      "manifest": {
+        "artifact_digest": "ddf476ab29425ef3d71f21be67bb4da10c88733c8ecd5ee3e37135ef9cd32856",
+        "context": "merge:Repo-A/main",
+        "policy": "v1",
+        "selector": "all-schema-claims-v1",
+        "claims": [
+          "api_support"
+        ],
+        "actions": [
+          "t"
+        ],
+        "requires_evaluation": true,
+        "requires_approval": true
+      },
+      "admitted_trace_actions": [
+        "t"
+      ],
+      "assumptions": "Identity, integrity, separation, grant validity, event ordering and complete capture are stipulated, not cryptographically or empirically verified."
+    },
+    "expected": [
+      true,
+      true,
+      false,
+      false
+    ]
+  },
+  {
+    "id": "F4",
+    "description": "Corrected claim; all affected bindings refreshed",
+    "fixture": {
+      "nodes": {
+        "r": {
+          "type": "Artifact",
+          "content": {
+            "commit": "commit-repair",
+            "claims": {
+              "api_support": {
+                "versions": [
+                  1
+                ]
+              }
+            }
+          },
+          "digest": "a605f5eb90ba0651e619c7b0349bd2507adeea0944932660e75dfd2181e28720"
+        },
+        "s": {
+          "type": "Source",
+          "content": {
+            "supported_versions": [
+              1
+            ],
+            "exhaustive_for_fixture": true
+          },
+          "digest": "2746eb5c7fd32ea23821e27943f4baab9b08324ac64efa7cbb6d4d8959e8b93d"
+        },
+        "e": {
+          "type": "Evidence",
+          "source_digest": "2746eb5c7fd32ea23821e27943f4baab9b08324ac64efa7cbb6d4d8959e8b93d",
+          "locator": "supported_versions",
+          "versions": [
+            1
+          ]
+        },
+        "t": {
+          "type": "Action",
+          "request": {
+            "instance": "commit-repair",
+            "operation": "commit",
+            "target": "Repo-A/feature/req-17",
+            "principal": "producer",
+            "policy": "v1"
+          },
+          "dispatch": {
+            "instance": "commit-repair",
+            "operation": "commit",
+            "target": "Repo-A/feature/req-17",
+            "principal": "producer",
+            "policy": "v1"
+          },
+          "receipt_request_digest": "6c776a4d5753a6114496a7982a787a0d898630524b3d00f094baafc06eb4f9c6",
+          "artifact_digest": "a605f5eb90ba0651e619c7b0349bd2507adeea0944932660e75dfd2181e28720"
+        },
+        "a": {
+          "type": "Authorization",
+          "request_digest": "6c776a4d5753a6114496a7982a787a0d898630524b3d00f094baafc06eb4f9c6"
+        },
+        "g": {
+          "type": "Grant"
+        },
+        "d": {
+          "type": "Principal"
+        },
+        "up": {
+          "type": "Actor"
+        },
+        "ue": {
+          "type": "Actor"
+        },
+        "m": {
+          "type": "Evaluation"
+        },
+        "z": {
+          "type": "EvaluationResult",
+          "artifact_digest": "a605f5eb90ba0651e619c7b0349bd2507adeea0944932660e75dfd2181e28720",
+          "evaluation_manifest": "unit-tests-v1",
+          "context": "merge:Repo-A/main",
+          "policy": "v1",
+          "passed_required_checks": true
+        },
+        "reviewer": {
+          "type": "Principal"
+        },
+        "qr": {
+          "type": "Approval",
+          "artifact_digest": "a605f5eb90ba0651e619c7b0349bd2507adeea0944932660e75dfd2181e28720",
+          "context": "merge:Repo-A/main",
+          "policy": "v1"
+        },
+        "c:api_support": {
+          "type": "Claim",
+          "slot": "api_support",
+          "content": {
+            "versions": [
+              1
+            ]
+          },
+          "artifact_digest": "a605f5eb90ba0651e619c7b0349bd2507adeea0944932660e75dfd2181e28720"
+        }
+      },
+      "edges": [
+        [
+          "d",
+          "delegates",
+          "g"
+        ],
+        [
+          "a",
+          "derivedFrom",
+          "g"
+        ],
+        [
+          "a",
+          "authorizes",
+          "t"
+        ],
+        [
+          "r",
+          "wasGeneratedBy",
+          "t"
+        ],
+        [
+          "t",
+          "performedBy",
+          "up"
+        ],
+        [
+          "m",
+          "evaluates",
+          "r"
+        ],
+        [
+          "z",
+          "generatedBy",
+          "m"
+        ],
+        [
+          "m",
+          "performedBy",
+          "ue"
+        ],
+        [
+          "reviewer",
+          "approves",
+          "qr"
+        ],
+        [
+          "qr",
+          "approvalRecordFor",
+          "r"
+        ],
+        [
+          "s",
+          "yields",
+          "e"
+        ],
+        [
+          "e",
+          "supports",
+          "c:api_support"
+        ],
+        [
+          "c:api_support",
+          "claimBoundTo",
+          "r"
+        ]
+      ],
+      "manifest": {
+        "artifact_digest": "a605f5eb90ba0651e619c7b0349bd2507adeea0944932660e75dfd2181e28720",
+        "context": "merge:Repo-A/main",
+        "policy": "v1",
+        "selector": "all-schema-claims-v1",
+        "claims": [
+          "api_support"
+        ],
+        "actions": [
+          "t"
+        ],
+        "requires_evaluation": true,
+        "requires_approval": true
+      },
+      "admitted_trace_actions": [
+        "t"
+      ],
+      "assumptions": "Identity, integrity, separation, grant validity, event ordering and complete capture are stipulated, not cryptographically or empirically verified."
+    },
+    "expected": [
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "id": "F5",
+    "description": "Additional material claim omitted from manifest",
+    "fixture": {
+      "nodes": {
+        "r": {
+          "type": "Artifact",
+          "content": {
+            "commit": "commit-omitted",
+            "claims": {
+              "api_support": {
+                "versions": [
+                  1
+                ]
+              },
+              "additional_support_claim": {
+                "versions": [
+                  2
+                ]
+              }
+            }
+          },
+          "digest": "a93104939093983873c6a40873450d864104626e13f18f1c2e9ca76ff5d8895e"
+        },
+        "s": {
+          "type": "Source",
+          "content": {
+            "supported_versions": [
+              1
+            ],
+            "exhaustive_for_fixture": true
+          },
+          "digest": "2746eb5c7fd32ea23821e27943f4baab9b08324ac64efa7cbb6d4d8959e8b93d"
+        },
+        "e": {
+          "type": "Evidence",
+          "source_digest": "2746eb5c7fd32ea23821e27943f4baab9b08324ac64efa7cbb6d4d8959e8b93d",
+          "locator": "supported_versions",
+          "versions": [
+            1
+          ]
+        },
+        "t": {
+          "type": "Action",
+          "request": {
+            "instance": "commit-omitted",
+            "operation": "commit",
+            "target": "Repo-A/feature/req-17",
+            "principal": "producer",
+            "policy": "v1"
+          },
+          "dispatch": {
+            "instance": "commit-omitted",
+            "operation": "commit",
+            "target": "Repo-A/feature/req-17",
+            "principal": "producer",
+            "policy": "v1"
+          },
+          "receipt_request_digest": "3ecb3517da6f091ccec86c4b92acaafa4d2e40d323806595475f10ea5f71c323",
+          "artifact_digest": "a93104939093983873c6a40873450d864104626e13f18f1c2e9ca76ff5d8895e"
+        },
+        "a": {
+          "type": "Authorization",
+          "request_digest": "3ecb3517da6f091ccec86c4b92acaafa4d2e40d323806595475f10ea5f71c323"
+        },
+        "g": {
+          "type": "Grant"
+        },
+        "d": {
+          "type": "Principal"
+        },
+        "up": {
+          "type": "Actor"
+        },
+        "ue": {
+          "type": "Actor"
+        },
+        "m": {
+          "type": "Evaluation"
+        },
+        "z": {
+          "type": "EvaluationResult",
+          "artifact_digest": "a93104939093983873c6a40873450d864104626e13f18f1c2e9ca76ff5d8895e",
+          "evaluation_manifest": "unit-tests-v1",
+          "context": "merge:Repo-A/main",
+          "policy": "v1",
+          "passed_required_checks": true
+        },
+        "reviewer": {
+          "type": "Principal"
+        },
+        "qr": {
+          "type": "Approval",
+          "artifact_digest": "a93104939093983873c6a40873450d864104626e13f18f1c2e9ca76ff5d8895e",
+          "context": "merge:Repo-A/main",
+          "policy": "v1"
+        },
+        "c:api_support": {
+          "type": "Claim",
+          "slot": "api_support",
+          "content": {
+            "versions": [
+              1
+            ]
+          },
+          "artifact_digest": "a93104939093983873c6a40873450d864104626e13f18f1c2e9ca76ff5d8895e"
+        },
+        "c:additional_support_claim": {
+          "type": "Claim",
+          "slot": "additional_support_claim",
+          "content": {
+            "versions": [
+              2
+            ]
+          },
+          "artifact_digest": "a93104939093983873c6a40873450d864104626e13f18f1c2e9ca76ff5d8895e"
+        }
+      },
+      "edges": [
+        [
+          "d",
+          "delegates",
+          "g"
+        ],
+        [
+          "a",
+          "derivedFrom",
+          "g"
+        ],
+        [
+          "a",
+          "authorizes",
+          "t"
+        ],
+        [
+          "r",
+          "wasGeneratedBy",
+          "t"
+        ],
+        [
+          "t",
+          "performedBy",
+          "up"
+        ],
+        [
+          "m",
+          "evaluates",
+          "r"
+        ],
+        [
+          "z",
+          "generatedBy",
+          "m"
+        ],
+        [
+          "m",
+          "performedBy",
+          "ue"
+        ],
+        [
+          "reviewer",
+          "approves",
+          "qr"
+        ],
+        [
+          "qr",
+          "approvalRecordFor",
+          "r"
+        ],
+        [
+          "s",
+          "yields",
+          "e"
+        ],
+        [
+          "e",
+          "supports",
+          "c:api_support"
+        ],
+        [
+          "c:api_support",
+          "claimBoundTo",
+          "r"
+        ],
+        [
+          "e",
+          "supports",
+          "c:additional_support_claim"
+        ],
+        [
+          "c:additional_support_claim",
+          "claimBoundTo",
+          "r"
+        ]
+      ],
+      "manifest": {
+        "artifact_digest": "a93104939093983873c6a40873450d864104626e13f18f1c2e9ca76ff5d8895e",
+        "context": "merge:Repo-A/main",
+        "policy": "v1",
+        "selector": "all-schema-claims-v1",
+        "claims": [
+          "api_support"
+        ],
+        "actions": [
+          "t"
+        ],
+        "requires_evaluation": true,
+        "requires_approval": true
+      },
+      "admitted_trace_actions": [
+        "t"
+      ],
+      "assumptions": "Identity, integrity, separation, grant validity, event ordering and complete capture are stipulated, not cryptographically or empirically verified."
+    },
+    "expected": [
+      true,
+      true,
+      true,
+      false
+    ]
+  }
+]
