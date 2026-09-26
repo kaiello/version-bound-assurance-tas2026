@@ -6,7 +6,8 @@ authors:
   - family-names: Aiello
     given-names: Kenneth D.
     affiliation: International Business Machines Corporation
-version: "1.0.0"
+version: "1.0.1"
+date-released: 2026-09-26
 repository-code: "https://github.com/kaiello/version-bound-assurance-tas2026"
 url: "https://github.com/kaiello/version-bound-assurance-tas2026"
 license: Apache-2.0

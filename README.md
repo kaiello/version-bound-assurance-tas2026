@@ -74,7 +74,7 @@ These are deterministic specification checks, not population-level performance m
 
 ## Citation and release
 
-`CITATION.cff` provides machine-readable citation metadata. The publication artifact is intended to be frozen as GitHub release/tag `v1.0.0`. If Zenodo assigns a version-specific DOI to that release, cite that DOI in the camera-ready manuscript rather than the mutable `main` branch.
+`CITATION.cff` provides machine-readable citation metadata. The publication artifact is frozen as GitHub release/tag `v1.0.1`. If Zenodo assigns a version-specific DOI to that release, cite that DOI in the camera-ready manuscript rather than the mutable `main` branch.
 
 Repository: https://github.com/kaiello/version-bound-assurance-tas2026
 
@@ -82,4 +82,4 @@ Repository: https://github.com/kaiello/version-bound-assurance-tas2026
 
 Unless otherwise noted, the repository contents, including the checker, documentation, and synthetic fixture data, are distributed under the **Apache License 2.0**. See `LICENSE`.
 
-The artifact has been approved for public release. The release record should preserve the exact commit associated with `v1.0.0`, the recorded outputs, and `SHA256SUMS.txt`.
+The artifact has been approved for public release. The release record preserves the exact commit associated with `v1.0.1`, the recorded outputs, and `SHA256SUMS.txt`.
