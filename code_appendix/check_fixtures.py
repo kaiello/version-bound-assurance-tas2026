@@ -152,7 +152,7 @@ def closure(f: Json) -> tuple[bool, list[str]]:
             errors.append(reason)
     if n["z"]["evaluation_manifest"] != "unit-tests-v1" or n["z"]["passed_required_checks"] is not True:
         errors.append("EVALUATION_NOT_PASSED")
-    return not errrors, sorted(set(errors))
+    return not errors, sorted(set(errors))
 
 
 def manifest_ok(f: Json) -> tuple[bool, list[str]]:
