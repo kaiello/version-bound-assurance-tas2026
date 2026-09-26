@@ -1,0 +1,62 @@
+name: Publish v1.0.0 release
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/publish-v1.0.0.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    if: github.repository == 'kaiello/version-bound-assurance-tas2026'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out frozen release candidate
+        uses: actions/checkout@v4
+        with:
+          ref: d21036ea95e2610b19b37594d2f304ebb79481cf
+          fetch-depth: 0
+
+      - name: Verify committed checksums
+        run: sha256sum -c SHA256SUMS.txt
+
+      - name: Re-run bounded fixture checker
+        env:
+          PYTHONOPTIMIZE: "0"
+        run: |
+          mkdir -p replay
+          python code_appendix/check_fixtures.py \
+            --output replay/results.json \
+            --fixtures replay/fixtures.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          checks = [
+              (Path("data_appendix/fixtures.json"), Path("replay/fixtures.json")),
+              (Path("results.json"), Path("replay/results.json")),
+          ]
+          for expected, observed in checks:
+              a = json.loads(expected.read_text(encoding="utf-8"))
+              b = json.loads(observed.read_text(encoding="utf-8"))
+              if a != b:
+                  raise SystemExit(f"Mismatch: {expected} != {observed}")
+              print(f"PASS {expected}")
+          PY
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_SHA: d21036ea95e2610b19b37594d2f304ebb79481cf
+        run: |
+          if gh release view v1.0.0 >/dev/null 2>&1; then
+            echo "Release v1.0.0 already exists; nothing to do."
+            exit 0
+          fi
+          gh release create v1.0.0 \
+            --title "v1.0.0 — TAS 2026 Reproducibility Artifact" \
+            --notes-file RELEASE_NOTES_v1.0.0.md \
+            --target "$RELEASE_SHA" \
+            --latest
