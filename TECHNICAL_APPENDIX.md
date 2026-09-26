@@ -57,4 +57,8 @@ This metadata supports reproducibility of categorical outputs. CPU time, peak me
 
 ## F. Availability
 
-All code and synthetic inputs required for the reported fixture results are included in this reproducibility package. The technical appendix itself is included after the references in the v20 paper. The reproducibility artifact is staged at `https://github.com/kaiello/version-bound-assurance-tas2026`. IBM approval for public release has been confirmed by the repository owner. The repository should be cited from the manuscript only after it is made public, the approved license terms are added, and a frozen release is created. A version-specific Zenodo DOI is recommended for the final citation. Checklist items 3.4 and 4.5 remain **no** until public availability and the applicable reuse license are actually in place.
+All code and synthetic inputs required for the reported fixture results are contained in the reproducibility artifact hosted at `https://github.com/kaiello/version-bound-assurance-tas2026`. The checker, documentation, and synthetic fixture data are distributed under the Apache License 2.0.
+
+For publication, the artifact should be cited by its frozen `v1.0.0` release rather than the mutable `main` branch. If the enabled Zenodo integration assigns a version-specific DOI to that release, the camera-ready manuscript should cite that DOI. The release record should preserve the exact source commit, recorded outputs, execution metadata, and SHA-256 checksums distributed with the artifact.
+
+With public availability and the Apache-2.0 license in place, reproducibility checklist items 3.4 and 4.5 can be updated from **no** to **yes** for this artifact.
