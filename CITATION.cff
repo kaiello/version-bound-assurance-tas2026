@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this reproducibility artifact, please cite the associated TAS 2026 paper and this artifact release."
+title: "Version-Bound Assurance: TAS 2026 Reproducibility Artifact"
+type: software
+authors:
+  - family-names: Aiello
+    given-names: Kenneth D.
+    affiliation: International Business Machines Corporation
+version: "0.1.0-prepublication"
+date-released: 2026-09-26
+repository-code: "https://github.com/kaiello/version-bound-assurance-tas2026"
+abstract: >-
+  Bounded executable specification, six synthetic fixtures, three negative controls,
+  recorded outputs, and environment metadata supporting the TAS 2026 paper
+  "Version-Bound Assurance at Agent Decision Boundaries: Binding Provenance,
+  Execution, and Delegated Authority."
+keywords:
+  - agent assurance
+  - provenance
+  - authorization
+  - reproducibility
+  - synthetic fixtures
