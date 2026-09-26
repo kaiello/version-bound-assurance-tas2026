@@ -1,0 +1,6 @@
+{
+  "v12_results_equal_v13": true,
+  "non_docstring_AST_equal": true,
+  "source_sha256_v12": "7ee7f0ee3e0930d30bd8b2c9face96d475d716757dffcec0bcf9f0d8b88c0293",
+  "source_sha256_v13": "a95505d2fe4faa100dff995fd2f11368e7293bf5894862ded139ca07271dd416"
+}
