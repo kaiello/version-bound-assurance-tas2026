@@ -21,12 +21,17 @@ jobs:
         with:
           python-version: "3.13"
 
+      - name: Verify committed artifact checksums
+        run: sha256sum -c SHA256SUMS.txt
+
       - name: Run bounded fixture checker
         env:
           PYTHONOPTIMIZE: "0"
         run: |
           mkdir -p replay
-          python code_appendix/check_fixtures.py             --output replay/results.json             --fixtures replay/fixtures.json
+          python code_appendix/check_fixtures.py \
+            --output replay/results.json \
+            --fixtures replay/fixtures.json
 
       - name: Compare generated fixtures and results
         run: |
