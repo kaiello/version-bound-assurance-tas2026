@@ -1,0 +1,47 @@
+name: Verify reproducibility fixtures
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Run bounded fixture checker
+        env:
+          PYTHONOPTIMIZE: "0"
+        run: |
+          mkdir -p replay
+          python code_appendix/check_fixtures.py             --output replay/results.json             --fixtures replay/fixtures.json
+
+      - name: Compare generated fixtures and results
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          checks = [
+              (Path("data_appendix/fixtures.json"), Path("replay/fixtures.json")),
+              (Path("results.json"), Path("replay/results.json")),
+          ]
+          for expected, observed in checks:
+              a = json.loads(expected.read_text(encoding="utf-8"))
+              b = json.loads(observed.read_text(encoding="utf-8"))
+              if a != b:
+                  raise SystemExit(f"Mismatch: {expected} != {observed}")
+              print(f"PASS {expected}")
+          PY
