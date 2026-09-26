@@ -39,7 +39,7 @@ The recorded reproduction used CPython 3.13.5. See `environment.json` and `TECHN
 .
 ├── README.md
 ├── CITATION.cff
-├── LICENSE_STATUS.md
+├── LICENSE
 ├── TECHNICAL_APPENDIX.md
 ├── SHA256SUMS.txt
 ├── environment.json
@@ -72,21 +72,14 @@ These are deterministic specification checks, not population-level performance m
 - Paper §4 / Table 1: K0, K1, F0–F5, and the negative controls
 - Technical appendix: exact fixture constants, replay procedure, and environment
 
-## Citation
+## Citation and release
 
-A machine-readable citation file is provided in `CITATION.cff`. A version-specific archival DOI should be added after the first public release is deposited in a persistent archive.
+`CITATION.cff` provides machine-readable citation metadata. The publication artifact is intended to be frozen as GitHub release/tag `v1.0.0`. If Zenodo assigns a version-specific DOI to that release, cite that DOI in the camera-ready manuscript rather than the mutable `main` branch.
 
-## Availability and release status
+Repository: https://github.com/kaiello/version-bound-assurance-tas2026
 
-IBM approval for public release has been confirmed by the repository owner. The repository is still being finalized for publication.
+## License
 
-Before the camera-ready manuscript cites a frozen public artifact:
+Unless otherwise noted, the repository contents, including the checker, documentation, and synthetic fixture data, are distributed under the **Apache License 2.0**. See `LICENSE`.
 
-1. make the repository public,
-2. add the approved software/data license or licenses,
-3. connect the repository to Zenodo (recommended) before the first release,
-4. create the frozen `v1.0.0` GitHub release/tag, and
-5. cite the version-specific Zenodo DOI or frozen GitHub release.
-
-Until an approved license is added, public visibility alone does not grant reuse rights. See `LICENSE_STATUS.md`.
-
+The artifact has been approved for public release. The release record should preserve the exact commit associated with `v1.0.0`, the recorded outputs, and `SHA256SUMS.txt`.
