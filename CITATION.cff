@@ -6,9 +6,10 @@ authors:
   - family-names: Aiello
     given-names: Kenneth D.
     affiliation: International Business Machines Corporation
-version: "0.1.0-prepublication"
-date-released: 2026-09-26
+version: "1.0.0"
 repository-code: "https://github.com/kaiello/version-bound-assurance-tas2026"
+url: "https://github.com/kaiello/version-bound-assurance-tas2026"
+license: Apache-2.0
 abstract: >-
   Bounded executable specification, six synthetic fixtures, three negative controls,
   recorded outputs, and environment metadata supporting the TAS 2026 paper
