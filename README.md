@@ -74,7 +74,9 @@ These are deterministic specification checks, not population-level performance m
 
 ## Citation and release
 
-`CITATION.cff` provides machine-readable citation metadata. The publication artifact is frozen as GitHub release/tag `v1.0.1`. If Zenodo assigns a version-specific DOI to that release, cite that DOI in the camera-ready manuscript rather than the mutable `main` branch.
+`CITATION.cff` provides machine-readable citation metadata. The publication artifact is frozen as GitHub release/tag `v1.0.1` and archived by Zenodo.
+
+**Version-specific DOI:** https://doi.org/10.5281/zenodo.22981118
 
 Repository: https://github.com/kaiello/version-bound-assurance-tas2026
 
