@@ -1,6 +1,6 @@
 # Technical Appendix: Bounded Specification Fixtures
 
-Companion to **Version-Bound Assurance at Agent Decision Boundaries: Binding Provenance, Execution, and Delegated Authority**, camera-ready revision v20.
+Companion to **Version-Bound Assurance at Agent Decision Boundaries: Binding Provenance, Execution, and Delegated Authority**, camera-ready revision v21.
 
 ## A. Scope and relation to the paper
 
@@ -59,6 +59,6 @@ This metadata supports reproducibility of categorical outputs. CPU time, peak me
 
 All code and synthetic inputs required for the reported fixture results are contained in the reproducibility artifact hosted at `https://github.com/kaiello/version-bound-assurance-tas2026`. The checker, documentation, and synthetic fixture data are distributed under the Apache License 2.0.
 
-For publication, the artifact should be cited by its frozen `v1.0.1` release rather than the mutable `main` branch. If the enabled Zenodo integration assigns a version-specific DOI to that release, the camera-ready manuscript should cite that DOI. The release record should preserve the exact source commit, recorded outputs, execution metadata, and SHA-256 checksums distributed with the artifact.
+The frozen `v1.0.1` release is archived by Zenodo at DOI `10.5281/zenodo.22981118`. The release record preserves the source commit, recorded outputs, execution metadata, and SHA-256 checksums distributed with the artifact.
 
-With public availability and the Apache-2.0 license in place, reproducibility checklist items 3.4 and 4.5 can be updated from **no** to **yes** for this artifact.
+With public availability and the Apache-2.0 license in place, reproducibility checklist items 3.4 and 4.5 are **yes** for this artifact.
